@@ -7,11 +7,22 @@ function GlobalContextProvider (props) {
 
     const [info, setInfo] = useState({id: 1, alias: "Ro", });
 
+    const [theme, setTheme] = useState(false);
+
+    const toggleTheme = () => {
+        console.log("click")
+        setTheme(!theme);
+    }
+
+    if(theme){
+        document.body.classList.add("dark-mode");
+    }  else {
+        document.body.classList.remove("dark-mode");
+    }
 
     return (
 
-        
-        <GlobalContext.Provider value={{info}}>
+        <GlobalContext.Provider value={{toggleTheme, theme, info}}>
 
             {/* la children sera l'arborescence de notre app et aura pour value le composant <App />  */}
             {props.children} 
